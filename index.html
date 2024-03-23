@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        table{width:100%;border-collapse: collapse;border:0;}
+        thead th{padding:5px 10px;background:#eeeeee;font-weight:normal;border:1px solid #dddddd;}
+        tbody td{padding:5px 10px;border:1px solid #dddddd;}
+        thead th:first-child{width:50px;}
+        .thumb{width:75px;height:100px;}
+        .thumb img{display:inline-block;width:inherit;height:inherit;object-fit:cover;}
+    </style>
+    <script src="./js/jquery-3.7.1.min.js" defer></script>
+    <script defer>
+        /* 웹페이지가 브라우징된 후 주소창을 사라지게 합니다. */
+        window.addEventListener('load', function() {
+            setTimeout(scrollTo, 0, 0, 1);
+        }, false);
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>1차 depth</th>
+                <th>2차 depth</th>
+                <th>경로</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>preloading</td>
+                <td></td>
+                <td><a href="./preloading.html" target="_blank">./preloading.html</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>login</td>
+                <td>로그인</td>
+                <td><a href="./signin.html" target="_blank">./signin.html</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>login</td>
+                <td>회원가입</td>
+                <td><a href="./signup.html" target="_blank">./signup.html</a></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="thumb">
+        <img src="https://images.unsplash.com/photo-1696935302123-372d54ab941e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    </div>
+</body>
+</html>
