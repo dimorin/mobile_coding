@@ -23,7 +23,7 @@ input.custom_txt{width:100%;height:40px;line-height:40px;padding:0 10px;border:1
 input.custom_txt:focus{border-color:#cbcbcb;}
 input.custom_txt::placeholder{color:#bbbbbb;}
 
-select.custom_select{width:100%;height:40px;line-height:40px;padding:0 10px;border:1px solid #ebebeb;background:#f6f6f6;border-radius:8px;}
+select.custom_select{width:100%;height:40px;min-width:6rem;line-height:40px;padding:0 10px;border:1px solid #ebebeb;background:#f6f6f6;border-radius:8px;}
 select.custom_select:focus{border-color:#cbcbcb;outline:0;}
 select.custom_select::placeholder{color:#bbbbbb;}
 
