@@ -5,18 +5,17 @@ html,body{
     font-family: var(--txt-family);
     font-size:62.5%;
     background:#f6f8fc;
-    -webkit-text-size-adjust:none;  /* 화면 회전시 폰트 사이즈 고정 */
-    -webkit-appearance:none; /* form 요소의 디바이스 기반 스타일 초기화 */
+    -webkit-text-size-adjust:none;  /* 화면 회전시 폰트 사이즈 고정 */    
 }
 body{font-size:1.4rem;}
 
 .mt-16{margin-top:1.6rem;}
 .pt-16{padding-top:1.6rem;}
 
-.btn{outline:0;border:none;background-color:white;font-family:var(--txt-family);cursor:pointer;}
-.btn_large{width:100%;height:40px;padding:0 1.0rem;background:#bada55;border-radius:8px;}
+.btn{outline:0;border:none;background-color:white;font-family:var(--txt-family);color:var(--txt_color);cursor:pointer;}
+.btn_large{width:100%;height:40px;padding:0 1.0rem;background:#bada55;border-radius:8px;color:#ffffff;}
 
-input{font-family:var(--txt-family);font-size:1.4rem;}
+input{font-family:var(--txt-family);font-size:1.4rem;-webkit-appearance:none; /* form 요소의 디바이스 기반 스타일 초기화 */ -webkit-border-radius:0;}
 input:focus{outline:0;}
 
 input.custom_txt{width:100%;height:40px;line-height:40px;padding:0 10px;border:1px solid #ebebeb;background:#f6f6f6;border-radius:8px;}
@@ -52,7 +51,7 @@ header h1{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);fon
 .signin-inner{padding:0 1.6rem;}
 
 /* signup */
-.signup-inner{padding:0 1.6rem;}
+.signup-inner{height:calc(100vh - 9.6rem);overflow-y:auto;padding:0 1.6rem 1.6rem;}/* 40+72-16 */
 
 @media (min-width: 768px) {
 	.container{max-width:500px;}
