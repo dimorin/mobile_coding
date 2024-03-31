@@ -36,7 +36,7 @@ input[type="checkbox"].custom_checkbox:checked {border-color:#cbcbcb;}
 input[type="checkbox"].custom_checkbox:before {content: '\e876';display:none;font-family:'Material Symbols Outlined';position: absolute;top:50%;left: 50%;transform:translate(-50%,-50%);}
 input[type="checkbox"].custom_checkbox:checked:before {display:block;}
 
-label.custom_label{display:inline-block;font-size:1.2rem;color:#666666;padding-bottom:1rem;}
+label.custom_label{display:inline-block;font-family:var(--txt-family);font-size:1.2rem;color:#666666;padding-bottom:1rem;}
 label.custom_label.required::after{content:'*';color:tomato;}
 
 /* layout */
@@ -53,6 +53,14 @@ header h1{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);fon
 /* signup */
 .signup-inner{height:calc(100vh - 9.6rem);overflow-y:auto;padding:0 1.6rem 1.6rem;}/* 40+72-16 */
 
+/* category */
+.category-inner{min-height:calc(100vh - 4rem);}
+.category_1depth_list{}
+.category_1depth_list > li{}
+.category_1depth_list > li .title{width:100%;height:4rem;line-height:4rem;padding:0 1.6rem;border-bottom:1px solid #f6f6f6;}
+.category_2depth_list{display:none;}
+.category_1depth_list .active > .category_2depth_list{display:block;}
+.category_2depth_list > li a{display:block;width:100%;height:4rem;line-height:4rem;padding:0 1.6rem;background:#f6f8fc;}
 @media (min-width: 768px) {
 	.container{max-width:500px;}
 }

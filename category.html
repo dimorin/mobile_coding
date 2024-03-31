@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="btn">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <h1>category</h1>
+            <div>
+                <span class="material-symbols-outlined">chat_bubble</span>
+            </div>
+        </header>
+        <div class="category-inner">
+            <ul class="category_1depth_list">
+                <li class="">
+                    <div class="title">1차메뉴 1</div>
+                    <ul class="category_2depth_list">
+                        <li>
+                            <a href="#">2차메뉴 1</a>
+                        </li>
+                        <li>
+                            <a href="#">2차메뉴 2</a>
+                        </li>
+                        <li>
+                            <a href="#">2차메뉴 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title">1차메뉴 2</div>
+                    <ul class="category_2depth_list">
+                        <li>
+                            <a href="#">2차메뉴 1</a>
+                        </li>
+                        <li>
+                            <a href="#">2차메뉴 2</a>
+                        </li>
+                        <li>
+                            <a href="#">2차메뉴 3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        
+            
+    </div>
+</body>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+        /* $('.category_1depth_list .title').on('click',function(){
+            $(this).parent().toggleClass('active').siblings().removeClass('active');
+        }); */
+        $('.category_1depth_list .title').on('click',function(){
+            $(this).next().stop().slideToggle().parent().siblings().children('.category_2depth_list').stop().slideUp();
+        });
+    });
+</script>
+</html>
