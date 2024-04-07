@@ -65,11 +65,15 @@
                         <input type="number" class="custom_txt" placeholder="년도(4자리)">
                     </div>
                     <div style="flex-grow:1;">
-                        <select class="custom_select">
-                            <option value="">월</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
+                        <div class="custom_select_box">
+                            <select class="custom_select" required>
+                                <option value="" disabled hidden selected>
+                                    월
+                                </option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>                        
                     </div>
                     <div style="flex-grow:1;">
                         <input type="number" class="custom_txt" placeholder="일">
