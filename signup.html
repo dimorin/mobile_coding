@@ -16,10 +16,8 @@
         .chips-container {
             display: flex;
             flex-wrap: wrap;
-            border: 1px solid #ccc;
-            padding: 5px;
-            border-radius: 5px;
-            width: 300px;
+            padding: 5px 0;
+            width: 100%;
         }
 
         .chip {
@@ -95,9 +93,8 @@
                     <div style="flex-grow:1;">
                         <div class="custom_select_box">
                             <select class="custom_select" required>
-                                <option value="" disabled hidden selected>
-                                    월
-                                </option>
+                                <option value="" disabled hidden selected>월</option>
+                                <!-- 필수항목이기 때문에 placeholder가 처음 한 번만 나와도 된다. -->
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -128,10 +125,7 @@
             <div class="pt-16">
                 <label for="" class="custom_label">소유 매장</label>
                 <div class="custom_select_box">
-                    <select id="multiSelect" class="custom_select" size="5" multiple>
-                        <option value="" disabled hidden selected>
-                            매장을 선택하세요
-                        </option>
+                    <select id="multiSelect" class="custom_select" multiple>
                         <optgroup label="충북">
                             <option value="1">충주점</option>
                             <option value="2">청주점</option>
@@ -152,44 +146,8 @@
                 <div class="chips-container" id="chipsContainer">
                 </div>
             </div>
-            <!-- <div class="pt-16">
-                <select id="multiSelect" multiple>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                </select>
 
-                <div class="chips-container" id="chipsContainer">
-                </div>
-            </div> -->
-            <div class="pt-16">
-                <select id="test1" size="3" multiple>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                </select>
-                <select id="test2" class="" size="5" multiple>
-                    <optgroup label="충북">
-                        <option value="1">충주점</option>
-                        <option value="2">청주점</option>
-                        <option value="3">청원점</option>
-                    </optgroup>
-                    <optgroup label="경남">
-                        <option value="4">안동점</option>
-                        <option value="5">경주점</option>
-                        <option value="6">포항점</option>
-                    </optgroup>
-                    <optgroup label="전북">
-                        <option value="7">전주점</option>
-                        <option value="8">광주점</option>
-                        <option value="9">무안점</option>
-                    </optgroup>
-                </select>
-            </div>
+
             <div
                 style="position:absolute;bottom:0;width:100%;padding:1.6rem;background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);">
                 <button class="btn btn_large btn_login">저장</button>
