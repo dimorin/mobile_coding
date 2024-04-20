@@ -101,18 +101,29 @@
             </div>
             <div class="pt-16">
                 <label for="" class="custom_label">소유 매장</label>
-                <select id="dino-select" class="custom_select" multiple>
-                    <optgroup label="Theropods">
-                        <option>Tyrannosaurus</option>
-                        <option>Velociraptor</option>
-                        <option>Deinonychus</option>
-                    </optgroup>
-                    <optgroup label="Sauropods">
-                        <option>Diplodocus</option>
-                        <option>Saltasaurus</option>
-                        <option>Apatosaurus</option>
-                    </optgroup>
-                </select>
+                <div class="custom_select_box">
+                    <select id="dino-select" class="custom_select" size="5" multiple>
+                        <option value="" disabled hidden selected>
+                            매장을 선택하세요
+                        </option>
+                        <optgroup label="충북">
+                            <option>충주점</option>
+                            <option>청주점</option>
+                            <option>청원점</option>
+                        </optgroup>
+                        <optgroup label="경남">
+                            <option>안동점</option>
+                            <option>경주점</option>
+                            <option>포항점</option>
+                        </optgroup>
+                        <optgroup label="전북">
+                            <option>전주점</option>
+                            <option>광주점</option>
+                            <option>무안점</option>
+                        </optgroup>
+                    </select>
+                </div>
+
             </div>
         </div>
         <div
