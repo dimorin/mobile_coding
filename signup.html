@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.7.1.min.js" defer></script>
     <script>
-        
+
     </script>
 </head>
+
 <body>
     <div class="container signup">
         <header>
@@ -22,7 +24,7 @@
                 <span class="material-symbols-outlined">chat_bubble</span>
             </div>
         </header>
-        <div class="signup-inner" style="">            
+        <div class="signup-inner" style="">
             <div class="pt-16">
                 <label for="" class="custom_label required">아이디</label>
                 <input type="text" class="custom_txt" placeholder="아이디">
@@ -44,7 +46,7 @@
                     <div>
                         <button class="btn btn_large">인증번호 받기</button>
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="pt-16">
                 <label for="" class="custom_label">이메일</label>
@@ -73,12 +75,12 @@
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
-                        </div>                        
+                        </div>
                     </div>
                     <div style="flex-grow:1;">
                         <input type="number" class="custom_txt" placeholder="일">
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="pt-16">
                 <label for="" class="custom_label">서비스 기간</label>
@@ -92,17 +94,30 @@
                     <div style="flex-grow:1;">
                         <input type="date" class="custom_txt" placeholder="종료일">
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="pt-16" style="display:flex;align-items:center;">
                 <input type="checkbox" id="switch" class="custom_checkbox" /><label for="switch">[필수]약관</label>
             </div>
+            <div class="pt-16">
+                <select multiple name="dwarfs" id="dwarfs" class="custom_select">
+                    <option>grumpy@woodworkers.com</option>
+                    <option>happy@woodworkers.com</option>
+                    <option>sleepy@woodworkers.com</option>
+                    <option>bashful@woodworkers.com</option>
+                    <option>sneezy@woodworkers.com</option>
+                    <option>dopey@woodworkers.com</option>
+                    <option>doc@woodworkers.com</option>
+                </select>
+            </div>
         </div>
-        <div style="position:absolute;bottom:0;width:100%;padding:1.6rem;background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);">
+        <div
+            style="position:absolute;bottom:0;width:100%;padding:1.6rem;background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);">
             <button class="btn btn_large btn_login">저장</button>
         </div>
-        
-            
+
+
     </div>
 </body>
+
 </html>
