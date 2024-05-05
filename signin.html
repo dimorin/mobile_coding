@@ -41,10 +41,12 @@
             <div class="pt-16"></div>
             <button class="btn btn_large btn_login">로그인</button>
             <div class="pt-16" style="display:flex;justify-content:center;">
-                <a href="#" target="_blank">비밀번호 찾기</a>
+                <button type="button" class="btn" onclick="alert('비밀번호 찾기 화면으로 이동합니다!');">비밀번호 찾기</button>
+            </div>
+            <div class="pt-16" style="display:flex;justify-content:center;">
+                <button type="button" class="btn" onclick="if(confirm('정말로 탈퇴하시겠습니까?')){alert('탈퇴')}">회원탈퇴</button>
             </div>
         </div>
     </div>
 </body>
-
 </html>
