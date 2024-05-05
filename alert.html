@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            /* 기본적으로 숨겨진 상태 */
+            position: fixed;
+            /* 화면 중앙에 고정 */
+            z-index: 1;
+            /* 다른 요소 위에 표시 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* 전체 너비 */
+            height: 100%;
+            /* 전체 높이 */
+            overflow: auto;
+            /* 스크롤 가능하게 */
+            background-color: rgb(0, 0, 0);
+            /* 백그라운드 색상 */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* 약간의 투명도 */
+        }
+
+        /* 모달 컨텐츠 스타일 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 중앙 정렬 */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* 너비 */
+        }
+
+        /* 닫기 버튼 스타일 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container signin">
+        <header>
+            <button class="btn">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <h1>Modal&입력초기화</h1>
+            <div>
+                <span class="material-symbols-outlined">chat_bubble</span>
+            </div>
+        </header>
+        <div class="signin-inner">
+            <div class="pt-16" style="display:flex;justify-content:flex-end;">
+                <a href="#" target="_blank">회원가입</a>
+            </div>
+            <div class="pt-16">
+                <div class="input_wrap">
+                    <input type="email" class="custom_txt" id="myInput" placeholder="이메일">
+                </div>                
+            </div>
+            <div class="pt-16">
+                <input type="password" class="custom_txt" placeholder="비밀번호">
+            </div>
+            <div class="pt-16" style="display: flex;align-items: center;justify-content: space-between;">
+                <label for="switch">자동로그인</label><input type="checkbox" id="switch" class="custom_toggle" />
+            </div>
+            <div class="pt-16"></div>
+            <button class="btn btn_large btn_login">로그인</button>
+            <div class="pt-16" style="display:flex;justify-content:center;">
+                <button type="button" class="btn" onclick="alert('비밀번호 찾기 화면으로 이동합니다!');">비밀번호 찾기</button>
+            </div>
+            <div class="pt-16" style="display:flex;justify-content:center;">
+                <button type="button" class="btn" onclick="if(confirm('정말로 탈퇴하시겠습니까?')){alert('탈퇴')}">회원탈퇴</button>
+            </div>
+            
+            <div class="pt-16" style="display:flex;justify-content:center;">
+                <button type="button" class="btn" onclick="myModal.open();">GO</button>
+            </div>
+            <!-- 모달 HTML -->
+            <div id="myModal" class="modal">
+                <!-- 모달 컨텐츠 -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>정말로 계속하시겠습니까?</p>
+                    <button id="confirmBtn">확인</button>
+                    <button id="cancelBtn">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        function Modal(confirmCallback) {
+            this.modal = document.createElement('div');
+            this.modal.className = 'modal';
+            this.modal.innerHTML =
+                '<div class="modal-content">' +
+                '<span class="close">&times;</span>' +
+                '<p>정말로 계속하시겠습니까?</p>' +
+                '<button id="confirmBtn" class="btn">확인</button>' +
+                '<button id="cancelBtn" class="btn">취소</button>' +
+                '</div>';
+            document.body.appendChild(this.modal);
+            this.confirmBtn = this.modal.querySelector('#confirmBtn');
+            this.cancelBtn = this.modal.querySelector('#cancelBtn');
+            this.closeSpan = this.modal.querySelector('.close');
+            this.confirmCallback = confirmCallback; // 콜백 함수 저장
+            this.addEventListeners();
+        }
+
+        Modal.prototype.addEventListeners = function () {
+            var _this = this;
+            this.closeSpan.onclick = function () {
+                _this.close();
+            };
+            this.cancelBtn.onclick = function () {
+                _this.close();
+            };
+            this.confirmBtn.onclick = function () {
+                _this.close();
+                // 콜백 함수 실행
+                if (typeof _this.confirmCallback === 'function') {
+                    _this.confirmCallback();
+                }
+            };
+            window.onclick = function (event) {
+                if (event.target === _this.modal) {
+                    _this.close();
+                }
+            };
+        };
+
+        Modal.prototype.open = function () {
+            this.modal.style.display = 'block';
+        };
+
+        Modal.prototype.close = function () {
+            this.modal.style.display = 'none';
+        };
+
+        // 스타일은 이전과 동일하게 사용할 수 있습니다.
+
+        // 사용 예:
+        var myModal = new Modal(function () {
+            alert('확인되었습니다'); // 콜백 함수로 '확인되었습니다' 알림
+        });
+        // 모달 열기
+        //myModal.open();
+    </script>
+    <script>
+        function InputWithReset(inputId) {
+            this.inputElement = document.getElementById(inputId);
+            this.resetButton = document.createElement('button');
+            this.resetButton.classList.add('btn_reset_txt');
+            this.resetButton.textContent = '초기화';
+            this.resetButton.style.display = 'none'; // 초기에는 버튼을 숨김
+            this.inputElement.parentNode.insertBefore(this.resetButton, this.inputElement.nextSibling);
+            this.addEventListeners();
+        }
+
+        InputWithReset.prototype.addEventListeners = function () {
+            var _this = this;
+            this.inputElement.oninput = function () {
+                if (_this.inputElement.value) {
+                    _this.resetButton.style.display = 'inline'; // 텍스트 입력 시 버튼 표시
+                } else {
+                    _this.resetButton.style.display = 'none'; // 텍스트 없을 시 버튼 숨김
+                }
+            };
+            this.resetButton.onclick = function () {
+                _this.inputElement.value = ''; // 버튼 클릭 시 입력창 초기화
+                _this.resetButton.style.display = 'none'; // 버튼 숨김
+            };
+        };
+
+        // 사용 예:
+        var inputWithReset = new InputWithReset('myInput');
+    </script>
+</body>
+
+</html>
