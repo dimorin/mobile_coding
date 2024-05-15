@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <style>
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ebebeb;
+            padding: 1.6rem;
+            margin: 1.6rem 0;
+        }
+
+        .ui-sortable-helper {
+            border-color: #bbbbbb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container signup">
+        <header>
+            <button class="btn">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <h1>리스트 drag로 순서변경</h1>
+            <div>
+                <span class="material-symbols-outlined">chat_bubble</span>
+            </div>
+        </header>
+        <div class="signup-inner" style="">
+
+            <ul class="list" id="sortable">
+                <li class="card">
+                    1
+                </li>
+                <li class="card">
+                    2
+                </li>
+                <li class="card">
+                    3
+                </li>
+            </ul>
+
+
+        </div>
+
+    </div>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#sortable").sortable();
+        });
+    </script>
+    <script>
+        $(function () {
+
+        });
+    </script>
+</body>
+
+</html>
