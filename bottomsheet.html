@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        #bottomSheetContainer{position:fixed;top:0px;left:50%;transform:translate(-50%, 0);width:100%;margin:0 auto;height:100%;background-color:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;}
+        #bottomSheetContainer.active{display:flex;}
+        #bottomSheet{background-color:#ffffff;width:100%;height:300px;transform:translateY(100%);border-top-left-radius:1rem;border-top-right-radius:1rem;transition:0.4s ease;}
+        #bottomSheet.active{transform:translateY(0%);}
+        @media (min-width: 768px) {
+            #bottomSheetContainer{max-width:500px;}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container signup">
+        <header>
+            <button class="btn">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <h1>bottom sheet</h1>
+            <div>                
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <button class="btn btn_search">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+        </header>
+        <div class="signup-inner" style="">
+            <div id="bottomSheetContainer">
+                <div id="bottomSheet">
+
+                </div>
+            </div>            
+        </div>
+    </div>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>        
+        $(function () {
+            $('.btn_search').on('click', showBottomSheet);
+            $('#bottomSheetContainer').on('click', hideBottomSheet);
+            function showBottomSheet(){
+                $('#bottomSheetContainer').addClass('active'); 
+                setTimeout(function(){
+                    $('#bottomSheetContainer #bottomSheet').addClass('active'); 
+                }, 1);                
+            }
+            function hideBottomSheet(){
+                $('#bottomSheetContainer #bottomSheet').removeClass('active');
+                
+                setTimeout(function(){
+                    $('#bottomSheetContainer').removeClass('active');  
+                }, 400);                
+            }
+        });
+    </script>
+</body>
+
+</html>
