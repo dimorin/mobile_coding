@@ -8,7 +8,12 @@
     <title>Document</title>
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
-
+    <style>
+        .area_title{width:100%;display:flex;justify-content:space-between;align-items:center;border:0;outline:0;background-color:transparent;cursor:pointer;}
+        .area_title_icon{font-size:1.8rem;}
+        .area_title.show .area_title_icon{transform:rotate(180deg);}
+        .area_content{display:none;}
+    </style>
 </head>
 
 <body>
@@ -23,6 +28,32 @@
             </div>
         </header>
         <div class="category-inner">
+            <div class="pt-16">
+                <label for="" class="custom_label">접혔다 펼쳤다</label>                
+            </div>
+            <ul>
+                <li>
+                    <button class="area_title">
+                        <span>제목1</span>
+                        <span class="area_title_icon material-symbols-outlined">keyboard_arrow_down</span>
+                    </button>
+                    <div class="area_content">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                </li>
+                <li>
+                    <button class="area_title">
+                        <span>제목2</span>
+                        <span class="area_title_icon material-symbols-outlined">keyboard_arrow_down</span>
+                    </button>
+                    <div class="area_content">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                </li>
+            </ul>
+            <div class="pt-16">
+                <label for="" class="custom_label">아코디언 형식 메뉴</label>                
+            </div>
             <ul class="category_1depth_list">
                 <li class="">
                     <div class="title">1차메뉴 1</div>
@@ -58,17 +89,24 @@
 
 
     </div>
-</body>
-<script src="./js/jquery-3.7.1.min.js"></script>
-<script>
-    $(function () {
-        /* $('.category_1depth_list .title').on('click',function(){
-            $(this).parent().toggleClass('active').siblings().removeClass('active');
-        }); */
-        $('.category_1depth_list .title').on('click', function () {
-            $(this).next().stop().slideToggle().parent().siblings().children('.category_2depth_list').stop().slideUp();
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $('.area_title').on('click', function(){
+            $(this).toggleClass('show');
+            $(this).siblings('.area_content').slideToggle();
         });
-    });
-</script>
+    </script>
+    <script>
+        $(function () {
+            /* $('.category_1depth_list .title').on('click',function(){
+                $(this).parent().toggleClass('active').siblings().removeClass('active');
+            }); */
+            $('.category_1depth_list .title').on('click', function () {
+                $(this).next().stop().slideToggle().parent().siblings().children('.category_2depth_list').stop().slideUp();
+            });
+        });
+    </script>
+</body>
+
 
 </html>
