@@ -47,6 +47,14 @@
         </header>
         <div class="signup-inner" style="">
             <div class="wrap"></div>
+            <div>
+                
+                <label for="">사용자메소드 연습</label>
+                <br>
+                <button class="btn_check">검사</button>
+                <br>
+                <input type="text" style="width:100%;">
+            </div>
         </div>
     </div>
     <script src="./js/jquery-3.7.1.min.js"></script>
@@ -65,7 +73,7 @@
             let lastObservedItem; // 마지막으로 관찰된 아이템
 
             // 아이템을 로드하고 화면에 추가하는 함수
-            $.fn.loadItems = function(){
+            function loadItems(){
                 $.ajax({
                     url: `https://raw.githubusercontent.com/ctrlcccv/ctrlcccv-demo/main/2023-11-01-ajax-Infinite/test.json`,
                     method: 'GET',
@@ -95,7 +103,7 @@
             }
 
             // 초기 페이지 로드 시 아이템 로드 함수 호출
-            $(window).loadItems();
+            loadItems();
 
             // Intersection Observer 설정
             const observerOptions = {
@@ -111,12 +119,29 @@
                         alert('로드하기');
                         lastObservedItem = $(`.${itemContainer} .${itemClass}:last`)[0];
                         console.log(entry.target === lastObservedItem);
-                        $(window).loadItems();
+                        loadItems();
                         observer.unobserve(entry.target); // 기존 관찰대상은 관찰 해제
                     }
                 });
             }, observerOptions);
         });
+    </script>
+    <script>
+        // 사용자 메소드 연습
+        /* 출처: https://annotations.tistory.com/89 [Annotation:티스토리] */
+        $.fn.IsEmpty = function(){
+            var value = this.val();
+            if(this.is("input")){
+                console.log(value);
+                if(value === '') alert('empty');
+                //this.val(value.replaceAll('&lt;', '<').replaceAll('&gt;', '>'));
+            }
+            return this;
+        };
+        $('.btn_check').on('click', function(){            
+            $("input").IsEmpty();
+        });
+        
     </script>
 </body>
 
