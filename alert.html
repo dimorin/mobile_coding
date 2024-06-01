@@ -9,6 +9,8 @@
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <style>
+        
+
         /* 모달 스타일 */
         .modal {
             display: none;
@@ -76,11 +78,13 @@
             </div>
             <div class="pt-16">
                 <div class="input_wrap">
-                    <input type="email" class="custom_txt" id="myInput" placeholder="이메일">
+                    <input type="email" class="custom_txt" id="fr_email" placeholder="이메일">
                 </div>                
             </div>
             <div class="pt-16">
-                <input type="password" class="custom_txt" placeholder="비밀번호">
+                <div class="input_wrap">
+                    <input type="password" class="custom_txt" id="fr_pw" placeholder="비밀번호">
+                </div>                
             </div>
             <div class="pt-16" style="display: flex;align-items: center;justify-content: space-between;">
                 <label for="switch">자동로그인</label><input type="checkbox" id="switch" class="custom_toggle" />
@@ -169,11 +173,12 @@
         //myModal.open();
     </script>
     <script>
+        // 입력창에 텍스트가 들어가면 초기화 버튼이 생기고, 초기화 버튼을 누르면 초기화 되는 기능
         function InputWithReset(inputId) {
-            this.inputElement = document.getElementById(inputId);
+            this.inputElement = document.querySelector(inputId);
             this.resetButton = document.createElement('button');
-            this.resetButton.classList.add('btn_reset_txt');
-            this.resetButton.textContent = '초기화';
+            this.resetButton.classList.add('btn_reset_value');
+            this.resetButton.innerHTML = '<span class="material-symbols-outlined">close</span>';
             this.resetButton.style.display = 'none'; // 초기에는 버튼을 숨김
             this.inputElement.parentNode.insertBefore(this.resetButton, this.inputElement.nextSibling);
             this.addEventListeners();
@@ -181,21 +186,59 @@
 
         InputWithReset.prototype.addEventListeners = function () {
             var _this = this;
-            this.inputElement.oninput = function () {
+            this.inputElement.addEventListener('input', function(){
                 if (_this.inputElement.value) {
                     _this.resetButton.style.display = 'inline'; // 텍스트 입력 시 버튼 표시
                 } else {
                     _this.resetButton.style.display = 'none'; // 텍스트 없을 시 버튼 숨김
                 }
-            };
-            this.resetButton.onclick = function () {
+            });                  
+           
+            this.resetButton.addEventListener('click', function(){
                 _this.inputElement.value = ''; // 버튼 클릭 시 입력창 초기화
                 _this.resetButton.style.display = 'none'; // 버튼 숨김
-            };
+            });
         };
 
         // 사용 예:
-        var inputWithReset = new InputWithReset('myInput');
+        var inputWithReset = new InputWithReset('#fr_email');
+    </script>
+    <script>
+        // 입력창에 텍스트가 들어가면 눈 버튼이 생기고, 눈을 클릭할 때 마다 텍스트가 토글되는 기능
+        function TogglePW(inputId) {
+            this.inputElement = document.querySelector(inputId);
+            this.visibilityButton = document.createElement('button');
+            this.visibilityButton.classList.add('btn_visibility_value');
+            this.visibilityButton.innerHTML = '<span class="material-symbols-outlined">visibility</span>';
+            this.visibilityButton.style.display = 'none'; // 초기에는 버튼을 숨김
+            this.inputElement.parentNode.insertBefore(this.visibilityButton, this.inputElement.nextSibling);
+            this.addEventListeners();
+        }
+
+        TogglePW.prototype.addEventListeners = function () {
+            var _this = this;
+            this.inputElement.addEventListener('input', function(){
+                if (_this.inputElement.value) {
+                    _this.visibilityButton.style.display = 'inline'; // 텍스트 입력 시 버튼 표시
+                } else {
+                    _this.visibilityButton.style.display = 'none'; // 텍스트 없을 시 버튼 숨김
+                }
+            });                  
+           
+            this.visibilityButton.addEventListener('click', function(){
+                //_this.inputElement.value = ''; // 버튼 클릭 시 입력창 초기화
+                if(_this.inputElement.type === "password"){
+                    _this.inputElement.type = "text";
+                    _this.visibilityButton.innerHTML = '<span class="material-symbols-outlined">visibility_off</span>';
+                }else{
+                    _this.inputElement.type = "password";
+                    _this.visibilityButton.innerHTML = '<span class="material-symbols-outlined">visibility</span>';
+                }
+            });
+        };
+
+        // 사용 예:
+        var togglePW = new TogglePW('#fr_pw');
     </script>
 </body>
 
