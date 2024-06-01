@@ -65,7 +65,7 @@
             let lastObservedItem; // 마지막으로 관찰된 아이템
 
             // 아이템을 로드하고 화면에 추가하는 함수
-            function loadItems() {
+            $.fn.loadItems = function(){
                 $.ajax({
                     url: `https://raw.githubusercontent.com/ctrlcccv/ctrlcccv-demo/main/2023-11-01-ajax-Infinite/test.json`,
                     method: 'GET',
@@ -95,7 +95,7 @@
             }
 
             // 초기 페이지 로드 시 아이템 로드 함수 호출
-            loadItems();
+            $(window).loadItems();
 
             // Intersection Observer 설정
             const observerOptions = {
@@ -111,7 +111,7 @@
                         alert('로드하기');
                         lastObservedItem = $(`.${itemContainer} .${itemClass}:last`)[0];
                         console.log(entry.target === lastObservedItem);
-                        loadItems();
+                        $(window).loadItems();
                         observer.unobserve(entry.target); // 기존 관찰대상은 관찰 해제
                     }
                 });
