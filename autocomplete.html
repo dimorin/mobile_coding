@@ -21,10 +21,6 @@
             border-radius: 4px;
             z-index: 10;
         }
-
-        .thx_scrollbar {
-            overflow-y: auto;
-        }
     </style>
 </head>
 
@@ -40,9 +36,6 @@
             </div>
         </header>
         <div class="signin-inner">
-
-
-
             <div class="pt-16">
                 <div class="input_wrap">
                     <input type="text" class="thx_txt" id="companyEmployee" name="companyEmployee"
@@ -54,8 +47,6 @@
                 </div>
                 <div id="result"></div>
             </div>
-
-
         </div>
     </div>
     <script src="./js/jquery-3.7.1.min.js"></script>
@@ -79,12 +70,14 @@
                 console.log("call fileName init");
             },
             eventListener: function () {
-                $(document).on('click', function () {
-                    $('.autoList_wrap').hide();
+                $(document).on('click', function (e) {
+                    if (!$(e.target).is('[name=companyEmployee]')) {
+                        $('.autoList_wrap').hide();
+                    }
                 });
-                /* $('[name=companyEmployee]').on('keyup click', function (e) { */
-                $('[name=companyEmployee]').on('keyup', function (e) {
-                    alert('keyup');
+
+                $('[name=companyEmployee]').on('keyup click', function (e) {
+                    console.dir(e.type);
                     var userName = $(e.currentTarget).val();
 
                     /* var url = "/fms/board/getUserAutoComplete";
@@ -126,10 +119,7 @@
                 $('.autoList.companyEmployee').html(listTemplate);
 
                 $('.autoList.companyEmployee button').on('click', function (e) {
-
-
                     $('[name=companyEmployee]').val($(e.currentTarget).data('employee'));
-
                     $('.autoList_wrap.companyEmployee').hide();
                 });
 
