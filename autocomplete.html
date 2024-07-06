@@ -82,7 +82,9 @@
                 $(document).on('click', function () {
                     $('.autoList_wrap').hide();
                 });
-                $('[name=companyEmployee]').on('keyup click', function (e) {
+                /* $('[name=companyEmployee]').on('keyup click', function (e) { */
+                $('[name=companyEmployee]').on('keyup', function (e) {
+                    alert('keyup');
                     var userName = $(e.currentTarget).val();
 
                     /* var url = "/fms/board/getUserAutoComplete";
