@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- iOS 주소창 없앰 -->
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .autoList_wrap {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 100%;
+            max-height: 100px;
+            background-color: white;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .thx_scrollbar {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container signin">
+        <header>
+            <button class="btn">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <h1>자동완성</h1>
+            <div>
+                <span class="material-symbols-outlined">chat_bubble</span>
+            </div>
+        </header>
+        <div class="signin-inner">
+
+
+
+            <div class="pt-16">
+                <div class="input_wrap">
+                    <input type="text" class="thx_txt" id="companyEmployee" name="companyEmployee"
+                        placeholder="업체직원 이름을 입력하세요" autocomplete="off">
+                    <div class="autoList_wrap companyEmployee thx_scrollbar">
+                        <ul class="autoList companyEmployee">
+                        </ul>
+                    </div>
+                </div>
+                <div id="result"></div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            initData();
+            initEventListener();
+            fileName.init();
+            fileName.eventListener();
+        });
+
+        function initData() {
+            console.log("call initData");
+        };
+        function initEventListener() {
+            console.log("call initEventListener");
+        }
+
+        var fileName = {
+            init: function () {
+                console.log("call fileName init");
+            },
+            eventListener: function () {
+                $(document).on('click', function () {
+                    $('.autoList_wrap').hide();
+                });
+                $('[name=companyEmployee]').on('keyup click', function (e) {
+                    var userName = $(e.currentTarget).val();
+
+                    /* var url = "/fms/board/getUserAutoComplete";
+                    var param = {};
+                    param.userName = userName;
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: JSON.stringify(param),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            //console.log(JSON.stringify(data));
+                            fileName.autoCompleteEmployee(data);
+                        },
+                        error: function (data) {
+                            alert("Fail!!!!");
+                        }
+                    }); */
+                    var data = dummy;
+                    fileName.autoCompleteEmployee(data);
+                });
+            },
+            autoCompleteEmployee: function (data) {
+                var list = data.userList;
+                var listTemplate = "";
+                list.forEach(function (item) {
+                    var company = item.company || '';//(item.company) ? item.company : '';
+                    var employee = item.employee || '';//(item.employee) ? item.employee : '';
+                    var template = `
+                        <li>
+                            <button type="button" class="btn" data-employee="${item.employee}">
+                                <span class="d-inline-block ">[${company}]</span>
+                                <span class="d-inline-block">${employee}</span>
+                            </button>
+                        </li>`;
+                    listTemplate += template;
+                });
+                $('.autoList.companyEmployee').html(listTemplate);
+
+                $('.autoList.companyEmployee button').on('click', function (e) {
+
+
+                    $('[name=companyEmployee]').val($(e.currentTarget).data('employee'));
+
+                    $('.autoList_wrap.companyEmployee').hide();
+                });
+
+                $('.autoList_wrap.companyEmployee').show();
+            }
+        }
+    </script>
+    <script>
+        var dummy = {
+            userList: [
+                { company: 'Apple', employee: 'mary Lee' },
+                { company: 'Apple', employee: 'mary Park' },
+                { company: 'Apple', employee: 'mary Yoon' },
+                { company: 'MS', employee: 'john Park' },
+                { company: 'MS', employee: 'john Yoon' },
+                { company: 'MS', employee: 'brad Kim' },
+                { company: 'Tesla', employee: 'brad Park' },
+                { company: 'Tesla', employee: 'mark Bill' },
+            ]
+        }
+    </script>
+</body>
+
+</html>

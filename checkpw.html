@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
-    
+
 </head>
 
 <body>
@@ -23,23 +23,23 @@
             </div>
         </header>
         <div class="signin-inner">
-            
+
             <div class="pt-16">
                 <div class="input_wrap">
-                    <input type="password" class="custom_txt" id="fr_new_pw" placeholder="새로운 비밀번호를 입력하세요">
+                    <input type="password" class="thx_txt" id="fr_new_pw" placeholder="새로운 비밀번호를 입력하세요">
                 </div>
                 <div id="result"></div>
             </div>
             <div class="pt-16">
                 <div class="input_wrap">
-                    <input type="password" class="custom_txt" id="fr_confirm_pw" placeholder="비밀번호를 다시 입력하세요">
-                </div>  
-                <div id="result2"></div>             
+                    <input type="password" class="thx_txt" id="fr_confirm_pw" placeholder="비밀번호를 다시 입력하세요">
+                </div>
+                <div id="result2"></div>
             </div>
-            
+
             <div class="pt-16"></div>
             <button class="btn btn_large btn_login" onclick="validatePassword();">비밀번호 변경</button>
-            
+
         </div>
     </div>
     <script src="./js/jquery-3.7.1.min.js"></script>
@@ -57,11 +57,11 @@
                 if (newPassword === confirmPassword) {
                     resultDiv2.innerHTML = '';
                     //resultDiv.style.color = 'green';
-                }else{
+                } else {
                     resultDiv2.innerHTML = '비밀번호가 일치하지 않습니다.';
                     resultDiv.style.color = 'red';
                 }
-            }else{
+            } else {
                 resultDiv.innerHTML = '비밀번호는 최소 8자에서 16자까지, 영문자, 숫자 및 특수 문자를 포함해야 합니다.';
                 resultDiv.style.color = 'red';
             }
@@ -81,20 +81,20 @@
 
         TogglePW.prototype.addEventListeners = function () {
             var _this = this;
-            this.inputElement.addEventListener('input', function(){
+            this.inputElement.addEventListener('input', function () {
                 if (_this.inputElement.value) {
                     _this.visibilityButton.style.display = 'inline'; // 텍스트 입력 시 버튼 표시
                 } else {
                     _this.visibilityButton.style.display = 'none'; // 텍스트 없을 시 버튼 숨김
                 }
-            });                  
-           
-            this.visibilityButton.addEventListener('click', function(){
+            });
+
+            this.visibilityButton.addEventListener('click', function () {
                 //_this.inputElement.value = ''; // 버튼 클릭 시 입력창 초기화
-                if(_this.inputElement.type === "password"){
+                if (_this.inputElement.type === "password") {
                     _this.inputElement.type = "text";
                     _this.visibilityButton.innerHTML = '<span class="material-symbols-outlined">visibility_off</span>';
-                }else{
+                } else {
                     _this.inputElement.type = "password";
                     _this.visibilityButton.innerHTML = '<span class="material-symbols-outlined">visibility</span>';
                 }
@@ -106,4 +106,5 @@
         var togglePW = new TogglePW('#fr_confirm_pw');
     </script>
 </body>
+
 </html>
