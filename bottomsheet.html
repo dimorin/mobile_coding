@@ -9,12 +9,43 @@
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        #bottomSheetContainer{position:fixed;top:0px;left:50%;transform:translate(-50%, 0);width:100%;margin:0 auto;height:100%;background-color:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;}
-        #bottomSheetContainer.active{display:flex;}
-        #bottomSheet{background-color:#ffffff;width:100%;height:300px;transform:translateY(100%);border-top-left-radius:1rem;border-top-right-radius:1rem;transition:0.4s ease;}
-        #bottomSheet.active{transform:translateY(0%);}
-        @media (min-width: 768px) {
-            #bottomSheetContainer{max-width:500px;}
+        .bottomSheetContainer {
+            display: flex;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            align-items: flex-end;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            transition: opacity 2s ease;
+        }
+
+        .bottomSheetContainer.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .bottomSheet {
+            width: 100%;
+            min-height: 20rem;
+            padding: 1.6rem;
+            transform: translateY(100%);
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            background-color: #ffffff;
+            transition: transform 0.4s ease;
+        }
+
+        .bottomSheet.active {
+            transform: translateY(0%);
         }
     </style>
 </head>
@@ -26,7 +57,7 @@
                 <span class="material-symbols-outlined">chevron_left</span>
             </button>
             <h1>bottom sheet</h1>
-            <div>                
+            <div>
                 <span class="material-symbols-outlined">chat_bubble</span>
                 <button class="btn btn_search">
                     <span class="material-symbols-outlined">search</span>
@@ -34,30 +65,58 @@
             </div>
         </header>
         <div class="signup-inner" style="">
-            <div id="bottomSheetContainer">
-                <div id="bottomSheet">
+            <div class="bottomSheetContainer">
+                <div class="bottomSheet">
+                    <div style="width:100px;margin:0 auto;">
+                        <div class="handle"
+                            style="display:inline-block;width:100px;height:10px;background:grey;margin:10px auto;">
+                        </div>
+                    </div>
 
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                    make a type specimen
+                    book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially
+                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                    Ipsum passages, and more
+                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                    classical Latin literature
+                    from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+                    College in Virginia,
+                    looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+                    through the cites of
+                    the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+                    1.10.32 and 1.10.33
+                    of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This
+                    book is a treatise
+                    on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
+                    ipsum dolor sit
+                    amet..", comes from a line in section 1.10.32.
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
     <script src="./js/jquery-3.7.1.min.js"></script>
-    <script>        
+    <script>
         $(function () {
             $('.btn_search').on('click', showBottomSheet);
-            $('#bottomSheetContainer').on('click', hideBottomSheet);
-            function showBottomSheet(){
-                $('#bottomSheetContainer').addClass('active'); 
-                setTimeout(function(){
-                    $('#bottomSheetContainer #bottomSheet').addClass('active'); 
-                }, 1);                
+            $('.bottomSheetContainer .bottomSheet .handle').on('click', hideBottomSheet);
+
+
+            function showBottomSheet() {
+                $('.bottomSheetContainer').addClass('active');
+                $('.bottomSheetContainer .bottomSheet').addClass('active');
+
             }
-            function hideBottomSheet(){
-                $('#bottomSheetContainer #bottomSheet').removeClass('active');
-                
-                setTimeout(function(){
-                    $('#bottomSheetContainer').removeClass('active');  
-                }, 400);                
+            function hideBottomSheet() {
+                $('.bottomSheetContainer .bottomSheet').removeClass('active');
+                $('.bottomSheetContainer').removeClass('active');
+                /* setTimeout(function () {
+                    $('.bottomSheetContainer').removeClass('active');
+                }, 400); */
             }
         });
     </script>
